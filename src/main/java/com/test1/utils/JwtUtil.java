@@ -26,8 +26,8 @@ public class JwtUtil {
     @Value("${jwt.token.secret}")
     private String secretKey;
 
-    private final long accessTokenValidTime = 1000L * 60 * 60 * 2;
-    private final long refreshTokenValidTime = accessTokenValidTime * 12;
+    private final long accessTokenValidTime = 1000L * 60 * 60; // 1시간
+    private final long refreshTokenValidTime = accessTokenValidTime * 24 * 7; // 7일
     private final String ID_KEY = "id";
     private final String ROLE_KEY = "role";
     private final String USERID_KEY = "userId";
