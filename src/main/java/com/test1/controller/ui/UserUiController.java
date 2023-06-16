@@ -1,6 +1,7 @@
 package com.test1.controller.ui;
 
 import com.test1.domain.dto.user.UserJoinRequest;
+import com.test1.domain.dto.user.UserLoginRequest;
 import com.test1.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,10 +18,21 @@ public class UserUiController {
 
     private final UserService userService;
 
+    @GetMapping
+    public String main() {
+        return "index";
+    }
+
     @GetMapping("/join")
     public String join(Model model) {
         model.addAttribute("userJoinRequest", new UserJoinRequest());
         return "join";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("userLoginRequest", new UserLoginRequest());
+        return "login";
     }
 
 }

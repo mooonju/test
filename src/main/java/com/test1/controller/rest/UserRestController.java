@@ -10,6 +10,7 @@ import com.test1.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,13 +27,13 @@ public class UserRestController {
     private final UserService userService;
 
     @PostMapping("/join")
-    public Response<UserJoinResponse> join(UserJoinRequest userJoinRequest) {
+    public Response<UserJoinResponse> join(@RequestBody UserJoinRequest userJoinRequest) {
         UserJoinResponse userJoinResponse = userService.join(userJoinRequest);
         return com.test1.domain.dto.Response.success(userJoinResponse);
     }
 
     @PostMapping("/login")
-    public Response<UserLoginResponse> login(UserLoginRequest userLoginRequest,
+    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest,
                                              HttpServletRequest httpServletRequest) {
         System.out.println("로그인 컨트롤러 시작");
 
