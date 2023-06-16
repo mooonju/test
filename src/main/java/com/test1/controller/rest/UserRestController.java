@@ -35,16 +35,9 @@ public class UserRestController {
     @PostMapping("/login")
     public Response<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest,
                                              HttpServletRequest httpServletRequest) {
-        System.out.println("로그인 컨트롤러 시작");
 
         TokenInfo token = userService.login(userLoginRequest);
         String accessToken = token.getAccessToken();
-
-
-        System.out.println("컨트롤러: " + userLoginRequest.getUserId());
-
-        String userIdhttp = httpServletRequest.getParameter("userId");
-        System.out.println("http: " + userIdhttp);
 
         if (accessToken != null) {
             HttpSession session = httpServletRequest.getSession(true);
