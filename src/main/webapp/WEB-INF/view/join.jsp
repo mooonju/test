@@ -5,15 +5,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        function join_click() {
+            console.log("누름")
+            let userId = $("#userId").val();
+            let password = $("#password").val();
+
+            console.log(userId)
+            console.log(password)
+
+            $.ajax({
+                type: "post",
+                url: "/api/v1/users/join",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    userId: userId,
+                    password: password
+                }),
+                success: function (data) {
+                    location.replace("/view/users/login")
+                },
+                error: function (){
+                    alert("에러");
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-    <form action="/api/v1/users/join" method="post">
+    <h3> 회원 가입 </h3>
+    <div>
 
-        아이디:<input type="text" name="userId"> <br>
-        비밀번호: <input type="password" name="password">
+        아이디:<input type="text" id="userId"> <br>
+        비밀번호: <input type="password" id="password">
 
-        <input type="submit" value="가입">
+        <button type="button" onclick="join_click()">가입</button>
 
-    </form>
+    </div>
 </body>
 </html>
