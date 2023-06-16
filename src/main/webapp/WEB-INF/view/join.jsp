@@ -8,12 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
         function join_click() {
-            console.log("누름")
             let userId = $("#userId").val();
             let password = $("#password").val();
 
-            console.log(userId)
-            console.log(password)
+            console.log("id 확인: " + userId)
+            console.log("pw 확인: " + password)
 
             $.ajax({
                 type: "post",
